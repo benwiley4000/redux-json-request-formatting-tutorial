@@ -80,15 +80,15 @@ const store = createStore(
   applyMiddleware(responseMiddleware, camelizeMiddleware)
 );
 
-const appElement = document.getElementById('app');
-appElement.innerHTML = JSON.stringify(store.getState().data);
+const dataElement = document.getElementById('data');
+dataElement.innerHTML = JSON.stringify(store.getState().data);
 
 store.subscribe(() => {
   const state = store.getState();
   if (state.fetching) {
-    appElement.innerHTML = '<i>Fetching...</i>';
+    dataElement.innerHTML = '<i>Fetching...</i>';
   } else {
-    appElement.innerHTML = JSON.stringify(state.data);
+    dataElement.innerHTML = JSON.stringify(state.data);
   }
 });
 
