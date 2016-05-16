@@ -4,17 +4,31 @@
   <meta charset="utf-8" />
   <title>Demo: Formatting JSON Responses via Redux Middleware</title>
   <style>
+    * {
+      font-size: 20px !important;
+    }
     #app {
-      font-size: 20px;
       width: 100vw;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items:center;
     }
+    #fetch, #clear {
+      position: fixed;
+      top: 10px;
+    }
+    #fetch {
+      left: 10px;
+    }
+    #clear {
+      right: 10px;
+    }
   </style>
 </head>
 <body>
+  <button id="fetch">Fetch data</button>
+  <button id="clear">Clear data</button>
   <div id="app"></div>
   <script src="dist/bundle.js"></script>
 </body>
