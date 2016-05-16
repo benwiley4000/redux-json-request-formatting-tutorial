@@ -2,6 +2,8 @@
  * ES6/ES2015 syntax
  */
 import { createStore, applyMiddleware } from 'redux';
+import actionTransformMiddleware from 'redux-action-transform-middleware';
+import camelize from 'camelize';
 
 const initialState = {
   data: {},
@@ -61,10 +63,16 @@ const responseMiddleware = store => next => action => {
   }, 1500);
 };
 
+const camelizeMiddleware = actionTransformMiddleware(
+  'req.data',
+  camelize,
+  ['DATA_RESPONSE']
+);
+
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(responseMiddleware)
+  applyMiddleware(responseMiddleware, camelizeMiddleware)
 );
 
 const appElement = document.getElementById('app');
