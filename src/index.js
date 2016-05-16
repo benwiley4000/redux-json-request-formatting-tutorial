@@ -65,7 +65,7 @@ const responseMiddleware = store => next => action => {
         data: responseData
       }
     });
-  }, 1500);
+  }, 1000);
 };
 
 const camelizeMiddleware = actionTransformMiddleware(
