@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case 'DATA_REQUEST':
       return {
         ...state,
-        fetching: false
+        fetching: true
       };
     case 'DATA_RESPONSE':
       return {
