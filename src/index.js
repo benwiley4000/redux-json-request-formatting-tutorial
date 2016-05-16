@@ -24,6 +24,11 @@ const reducer = (state, action) => {
         data: action.req.data,
         fetching: false
       };
+    case 'CLEAR_DATA':
+      return {
+        ...state,
+        data: {}
+      };
     default:
       return state;
   }
@@ -76,6 +81,7 @@ const store = createStore(
 );
 
 const appElement = document.getElementById('app');
+appElement.innerHTML = JSON.stringify(store.getState().data);
 
 store.subscribe(() => {
   const state = store.getState();
@@ -86,6 +92,14 @@ store.subscribe(() => {
   }
 });
 
-store.dispatch({
-  type: 'DATA_REQUEST'
+document.getElementById('fetch').addEventListener('click', () => {
+  store.dispatch({
+    type: 'DATA_REQUEST'
+  });
+});
+
+document.getElementById('clear').addEventListener('click', () => {
+  store.dispatch({
+    type: 'CLEAR_DATA'
+  });
 });
