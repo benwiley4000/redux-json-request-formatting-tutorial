@@ -73,10 +73,15 @@ const camelizeMiddleware = actionTransformMiddleware(
   camelize
 );
 
+const middleware = [responseMiddleware];
+if (!window.WITHOUT_CAMELIZE) {
+  middleware.push(camelizeMiddleware);
+}
+
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(responseMiddleware, camelizeMiddleware)
+  applyMiddleware(...middleware)
 );
 
 const dataElement = document.getElementById('data');

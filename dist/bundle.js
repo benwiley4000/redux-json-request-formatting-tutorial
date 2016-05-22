@@ -129,7 +129,12 @@
 
 	var camelizeMiddleware = (0, _reduxActionTransformMiddleware2.default)('req.data', _camelize2.default);
 
-	var store = (0, _redux.createStore)(reducer, initialState, (0, _redux.applyMiddleware)(responseMiddleware, camelizeMiddleware));
+	var middleware = [responseMiddleware];
+	if (!window.WITHOUT_CAMELIZE) {
+	  middleware.push(camelizeMiddleware);
+	}
+
+	var store = (0, _redux.createStore)(reducer, initialState, _redux.applyMiddleware.apply(undefined, middleware));
 
 	var dataElement = document.getElementById('data');
 	dataElement.innerHTML = JSON.stringify(store.getState().data);
