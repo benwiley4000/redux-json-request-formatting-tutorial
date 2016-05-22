@@ -8,6 +8,6 @@
   "dependencies": {
     "camelize": "^1.0.0",
     "redux": "^3.5.2",
-    "redux-action-transform-middleware": "^0.3.0"
+    "redux-action-transform-middleware": "^0.4.1"
   }
 }

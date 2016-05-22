@@ -70,8 +70,7 @@ const responseMiddleware = store => next => action => {
 
 const camelizeMiddleware = actionTransformMiddleware(
   'req.data',
-  camelize,
-  ['DATA_RESPONSE']
+  camelize
 );
 
 const store = createStore(
