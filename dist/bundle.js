@@ -79,7 +79,7 @@
 	      });
 	    case 'DATA_RESPONSE':
 	      return _extends({}, state, {
-	        data: action.req.data,
+	        data: action.res.data,
 	        fetching: false
 	      });
 	    case 'CLEAR_DATA':
@@ -118,7 +118,7 @@
 	      setTimeout(function () {
 	        next(_extends({}, rest, {
 	          type: 'DATA_RESPONSE',
-	          req: {
+	          res: {
 	            data: responseData
 	          }
 	        }));
@@ -127,7 +127,7 @@
 	  };
 	};
 
-	var camelizeMiddleware = (0, _reduxActionTransformMiddleware2.default)('req.data', _camelize2.default);
+	var camelizeMiddleware = (0, _reduxActionTransformMiddleware2.default)('res.data', _camelize2.default);
 
 	var middleware = [responseMiddleware];
 	if (!window.WITHOUT_CAMELIZE) {
