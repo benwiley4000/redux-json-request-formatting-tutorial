@@ -21,7 +21,7 @@ const reducer = (state, action) => {
     case 'DATA_RESPONSE':
       return {
         ...state,
-        data: action.req.data,
+        data: action.res.data,
         fetching: false
       };
     case 'CLEAR_DATA':
@@ -61,7 +61,7 @@ const responseMiddleware = store => next => action => {
     next({
       ...rest,
       type: 'DATA_RESPONSE',
-      req: {
+      res: {
         data: responseData
       }
     });
@@ -69,7 +69,7 @@ const responseMiddleware = store => next => action => {
 };
 
 const camelizeMiddleware = actionTransformMiddleware(
-  'req.data',
+  'res.data',
   camelize
 );
 
